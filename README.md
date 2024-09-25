@@ -1,4 +1,4 @@
-# DA 421M Course Project
+# DA 421M Multi-modal Data Processing and Learning Course Project
 ## Project Title:
  VideoBERT: A Joint Model for Video and Language Representation Learning
 ## Group Members:
