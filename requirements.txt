@@ -1,0 +1,12 @@
+nltk==3.9.1
+numpy==1.22.4
+opencv_python==4.7.0.72
+opencv_python_headless==4.7.0.72
+punctuator==0.9.6
+scikit_learn==1.2.2
+tensorboardX==2.6.2.2
+tensorflow==2.12.0
+tensorflow_intel==2.12.0
+torch==2.0.0+cu117
+tqdm==4.65.0
+transformers==4.46.1
