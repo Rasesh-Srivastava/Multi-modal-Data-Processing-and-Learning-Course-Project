@@ -50,6 +50,7 @@ pip install git+https://github.com/Maluuba/nlg-eval.git@master
     evaluating both configurations, we assess the impact of the alignment task on model performance. The
     processed training data required for this step is made available through a designated source, allowing
     for reproducibility and comparison with baseline results.
+  <hr>
 - **Step 7**: **Evaluation**
     To evaluate the trained model, we use the YouCookII validation dataset, a benchmark dataset for video
     captioning and classification tasks. VideoBERT’s performance is assessed on a zero-shot classification
@@ -58,6 +59,48 @@ pip install git+https://github.com/Maluuba/nlg-eval.git@master
     accuracy and language coherence.
 
 ## Modification of VideoBERT: UniVL (A Unified Video and Language Pre-Training Model for Multimodal Understanding and Generation)
+Follow these steps to set up and run inference for video captioning using the UniVL model. Ensure each file 
+is correctly placed within your UniVL repository. Clone this repository and then run the following.
+
+Run this block of code to get the pretrained weights of univl.
+```bash
+mkdir -p ./weight
+wget -P ./weight https://github.com/microsoft/UniVL/releases/download/v0/univl.pretrained.bin
+```
+
+Run this block of code to collect the data from the source
+```bash
+mkdir -p data
+cd data
+wget https://github.com/microsoft/UniVL/releases/download/v0/youcookii.zip
+unzip youcookii.zip
+cd ..
+```
+
+Run this block of code to run the captioning task.
+```bash
+# Define path variables
+TRAIN_CSV="data/youcookii/youcookii_train.csv"
+VAL_CSV="data/youcookii/youcookii_val.csv"
+DATA_PATH="data/youcookii/youcookii_data.no_transcript.pickle"  # For video-only captioning
+FEATURES_PATH="data/youcookii/youcookii_videos_features.pickle"
+INIT_MODEL="weight/univl.pretrained.bin"
+OUTPUT_ROOT="ckpts"
+
+# Run inference
+python -m torch.distributed.launch --nproc_per_node=1 main_task_caption.py \
+--do_eval --num_thread_reader=4 \
+--batch_size=16 --n_display=100 \
+--val_csv ${VAL_CSV} \
+--data_path ${DATA_PATH} \
+--features_path ${FEATURES_PATH} \
+--output_dir ${OUTPUT_ROOT}/ckpt_youcook_caption --bert_model bert-base-uncased \
+--do_lower_case --max_words 128 --max_frames 96 \
+--batch_size_val 64 --visual_num_hidden_layers 6 \
+--decoder_num_hidden_layers 3 --datatype youcook \
+--init_model ${INIT_MODEL}
+```
+
 
 
 ## Group Members:
