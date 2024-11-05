@@ -35,7 +35,7 @@ def main():
     tokenizer = BertTokenizer.from_pretrained(globals.bert_model)
     if args.model_name_or_path is None:
         # start from inital model
-        print('### LOADING INITIAL MODEL ###')
+        print('LOADING INITIAL MODEL')
         model = VideoBertForPreTraining.from_pretrained(
             pretrained_model_name_or_path=None,
             state_dict=create_video_bert_save_dict_from_bert(globals.config),
@@ -43,7 +43,7 @@ def main():
         )
     else:
         # start from checkpoint
-        print('### LOADING MODEL FROM CHECKPOINT:', args.model_name_or_path, '###')
+        print('LOADING MODEL FROM CHECKPOINT:', args.model_name_or_path, '###')
         model = VideoBertForPreTraining.from_pretrained(args.model_name_or_path)
 
     print('WEIGHTS:')
