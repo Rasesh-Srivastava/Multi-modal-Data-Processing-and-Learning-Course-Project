@@ -7,6 +7,7 @@ This repository contains the code for the
 ## Environment Setup
 ```bash
 pip install -r requirements.txt
+pip install git+https://github.com/Maluuba/nlg-eval.git@master
 ```
 
 ## VideoBERT: A Joint Model for Video and Language Representation Learning
