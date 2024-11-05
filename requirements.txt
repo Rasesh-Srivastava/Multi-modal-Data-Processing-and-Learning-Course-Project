@@ -10,4 +10,3 @@ tensorflow_intel==2.12.0
 torch==2.0.0+cu117
 tqdm==4.65.0
 transformers==4.46.1
-git+https://github.com/Maluuba/nlg-eval.git@master
