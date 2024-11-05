@@ -2,7 +2,6 @@
 
 ## Project Title:
 Video Captioning with Transformer-Based Models: An Exploration from VideoBERT to UniVL
-This repository contains the code for the 
 
 ## Environment Setup
 ```bash
@@ -60,7 +59,7 @@ pip install git+https://github.com/Maluuba/nlg-eval.git@master
 
 ## Modification of VideoBERT: UniVL (A Unified Video and Language Pre-Training Model for Multimodal Understanding and Generation)
 Follow these steps to set up and run inference for video captioning using the UniVL model. Ensure each file 
-is correctly placed within your UniVL repository. Clone this repository and then run the following.
+is correctly placed within your Modification_UniVL repository. Clone this repository and then run the following.
 
 Run this block of code to get the pretrained weights of univl.
 ```bash
